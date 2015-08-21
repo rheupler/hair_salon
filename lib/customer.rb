@@ -29,4 +29,15 @@ class Customer
   define_method(:==) do |another_customer|
     self.name().==(another_customer.name()).&(self.id().==(another_customer.id()))
   end
+
+  define_singleton_method(:find) do |id|
+    found_customer = nil
+    Customer.all().each() do |customer|
+      if customer.id().==(id)
+        found_customer = customer
+      end
+    end
+    found_customer
+  end
+
 end
