@@ -21,7 +21,7 @@ class Customer
     customers
   end
 
-  define_method(:save) do
+  def save
     result = DB.exec("INSERT INTO customers (name, phone, stylist_id) VALUES ('#{@name}', '#{@phone}', #{@stylist_id}) RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
