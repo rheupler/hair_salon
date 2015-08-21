@@ -1,5 +1,8 @@
 Hair Salon
 
+###DATABASE NAME "HAIR_SALON"###
+###TABLES NAMES "STYLISTs" AND "CUSTOMERS"###
+
 An app to help a hair salon keep track of which clients see which stylists. Created by Ryan Heupler
 
 Set Up

@@ -53,18 +53,3 @@ post("/customers") do
   @stylist = Stylist.find(stylist_id)
   erb(:stylist)
 end
-# 
-# patch("/customers/:id") do
-#   name = params.fetch("name")
-#   @customer = Customer.find(params.fetch("id").to_i())
-#   @customer.update({:name => name})
-#   @customer.update({:phone => phone})
-#   erb(:customers)
-# end
-#
-# delete("/customers/:id") do
-#   @customers = Customer.find(params.fetch("id").to_i())
-#   @customer.delete()
-#   @customers = Customer.all()
-#   erb(:index)
-# end
