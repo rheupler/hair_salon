@@ -36,5 +36,29 @@ class Stylist
     found_stylist
   end
 
+  define_method(:customers) do
+    stylist_customers = []
+    customers = DB.exec("SELECT * FROM customers WHERE stylist_id = #{self.id()} ORDER BY name;")
+    customers.each() do |customer|
+      name = customer.fetch("name")
+      phone = customer.fetch("phone")
+      stylist_id = customer.fetch("stylist_id")
+      id = customer.fetch("id").to_i()
+      stylist_customers.push(Customer.new({:name => name, :phone => phone, :stylist_id => stylist_id, :id => id}))
+    end
+    stylist_customers
+  end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name)
+    @id = self.id()
+    DB.exec("UPDATE stylists SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+    DB.exec("DELETE FROM customers WHERE stylist_id = #{self.id()};")
+  end
+
 
 end
