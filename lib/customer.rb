@@ -40,4 +40,14 @@ class Customer
     found_customer
   end
 
+  def update(attributes)
+    @name = attributes.fetch(:name)
+    @id = self.id()
+    DB.exec("UPDATE customers SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  def delete
+    DB.exec("DELETE FROM customers WHERE id = #{self.id()};")
+  end
+
 end
